@@ -1,0 +1,123 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  background-color: #FFF;
+}
+
+#app {
+  padding: 30px;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+.sidebar {
+  display: block;
+  float: left;
+  margin: 0px 20px 20px 0px;
+}
+
+.content {
+  display: block;
+  float: left;
+}
+
+.sort__wrapper {
+  width: 300px;
+  height: 300px;
+  overflow: scroll;
+}
+
+.sort__wrapper .sort {
+  min-width: 500px;
+  min-height: 500px;
+}
+
+.horizontal-dots {
+  width: 3000px;
+  height: 1px;
+  border-bottom: 1px dashed #cfcfcf;
+  float: left;
+  white-space: nowrap;
+}
+
+.vertical-dots {
+  width: 1px;
+  height: 3000px;
+  border-left: 1px dashed #cfcfcf;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+.cursor-move {
+  cursor: move;
+}
+
+ul.menu {
+  width: 200px;
+}
+
+ul.sort__vertical li {
+  min-width: 140px;
+}
+
+
+li {
+  display: block;
+  padding: 5px 10px;
+  margin: 5px 5px 0px 0px;
+  background-color: #f2f2f2;
+  border-bottom: 1px solid #e2e2e2;
+  list-style: none;
+}
+
+.preview {
+  display: block;
+  float: left;
+}
+
+.content {
+  max-width: 600px;
+  min-width: 200px;
+}
+
+.content__horizontal ul li,
+.content__scroll ul li {
+  display: inline-block;
+}
+
+
+.menu__item {
+
+}
+
+.menu__item a {
+  width: 100%;
+  display: block;
+  color: #bebebe;
+}
+
+.menu__item--active {
+  background-color: #ff9e44;
+}
+
+.menu__item--active a {
+  color: #FFFFFF;
+}
+
+.float-left {
+  float: left;
+}
+
+.float-clear {
+  clear: both;
+}
