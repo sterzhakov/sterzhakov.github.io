@@ -1777,14 +1777,14 @@ var List = function (_Component) {
         })
       }, this.props.items.length ? null : li({
         'data-vsort-empty': 'true',
-        class: 'sort__item',
+        class: 'sort__item noselect',
         key: 'empty'
       }, 'list is empty'), this.props.items.map(function (item) {
         return li({
-          class: 'sort__item',
+          class: 'sort__item noselect',
           key: item.id.toString()
         }, span({
-          class: 'sort__icon cursor-move'
+          class: 'sort__icon cursor-move noselect'
         }, '#'), ' ', item.name);
       }));
     }
@@ -2528,7 +2528,7 @@ var createSortable = function createSortable() {
     isEmptyNode: isEmptyNode,
     ghostClassName: 'vsort__ghost',
     draggableClassName: 'vsort__draggable',
-    cloneRootNode: true,
+    cloneRootNode: false,
     scrollNode: null,
     scrollFill: 50,
     scrollSpeed: 5,
@@ -14631,7 +14631,7 @@ var scrollContainer = function scrollContainer(_ref) {
     case 'bottom':
       {
 
-        if (containerNode.scrollTop == containerBox.height) {
+        if (containerNode.scrollHeight == containerBox.height) {
 
           clearInterval(intervalId);
 
@@ -14661,7 +14661,7 @@ var scrollContainer = function scrollContainer(_ref) {
     case 'right':
       {
 
-        if (containerNode.scrollLeft == containerBox.width) {
+        if (containerNode.scrollWidth == containerBox.width) {
 
           clearInterval(intervalId);
 
@@ -14877,7 +14877,7 @@ var createDroppablePosition = function createDroppablePosition(memo) {
 
     if (config.isEmptyNode(droppableNode)) return 0;
 
-    var groupIndex = droppableGroup.name != rootGroup.name && droppableNode.nextSibling ? 1 : 0;
+    var groupIndex = droppableGroup.name != rootGroup.name && droppableNode.nextSibling || droppableGroup.name != rootGroup.name && droppableAlign == 'before' ? 1 : 0;
 
     return (droppableAlign == 'before' ? droppableIndex < draggablePosition ? droppableIndex : droppableIndex - 1 : droppableIndex < draggablePosition ? droppableIndex + 1 : droppableIndex) + groupIndex;
   }();
@@ -15460,6 +15460,13 @@ var createHandlerNode = function createHandlerNode(memo) {
 
   var handlerNode = B.last(findParentNodes(universalEvent.target, config.isHandlerNode));
 
+  if (handlerNode) {
+
+    handlerNode.ondragstart = function () {
+      return false;
+    };
+  }
+
   return Object.assign({}, memo, { handlerNode: handlerNode });
 };
 
@@ -15497,6 +15504,10 @@ var createDraggableNode = function createDraggableNode(memo) {
   var draggableNode = B.last(findParentNodes(universalEvent.target, config.isDraggableNode));
 
   var draggableCloneNode = draggableNode.cloneNode(true);
+
+  draggableCloneNode.ondragstart = function () {
+    return false;
+  };
 
   draggableNode.parentNode.insertBefore(draggableCloneNode, draggableNode);
 
