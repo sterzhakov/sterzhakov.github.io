@@ -13672,8 +13672,8 @@ var App = function (_Component) {
 
       return [div({ class: 'header' }, a({
         class: 'header__back',
-        href: 'https://github.com/sterzhakov/vsort'
-      }, 'Back to github'), p({
+        href: 'https://sterzhakov.github.io/'
+      }, 'Back'), p({
         class: 'header__description'
       }, 'Drag elements by #')), div({ class: 'sidebar' }, Menu.v({
         items: this.state.pages,
